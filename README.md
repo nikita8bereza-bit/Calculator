@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>Калькулятор</title>
@@ -10,132 +11,200 @@
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0f172a;
+            color: #f8fafc;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            padding: 40px 20px;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 24px;
         }
         
-        h1 {
-            color: white;
-            font-size: 42px;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            letter-spacing: 1px;
+        .page {
+            width: min(100%, 1000px);
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 40px 120px rgba(15, 23, 42, 0.65);
         }
         
-        .calc-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 400px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .header {
+            padding: 28px 32px 20px;
+            background: #111827;
+            text-align: left;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #e2e8f0;
+        }
+        
+        .header p {
+            margin-top: 10px;
+            color: #cbd5e1;
+            max-width: 720px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .calculator {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+        
+        .panel {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        
+        .left-panel {
+            border-right: 1px solid rgba(148, 163, 184, 0.12);
+            background: #0f172a;
+        }
+        
+        .right-panel {
+            background: #111827;
+        }
+        
+        label {
+            display: block;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 8px;
         }
         
         input {
             width: 100%;
-            padding: 14px;
-            margin: 12px 0;
+            padding: 16px 18px;
             font-size: 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            background: #f8f9fa;
+            border-radius: 14px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: #0f172a;
+            color: #f8fafc;
         }
         
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
+        input::placeholder {
+            color: #64748b;
         }
         
         button {
             width: 100%;
-            padding: 14px;
-            margin: 20px 0 10px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
+            padding: 16px 18px;
+            border-radius: 14px;
             border: none;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            background: #2563eb;
+            color: #f8fafc;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+            letter-spacing: 0.04em;
         }
         
         button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+            transform: translateY(1px);
         }
         
-        #results {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px solid #e0e0e0;
+        .results-card {
+            padding: 24px;
+            border-radius: 20px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
         
-        .result {
-            margin: 12px 0;
+        .result-title {
             font-size: 18px;
-            color: #333;
-            font-weight: 600;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-            padding: 12px;
-            border-radius: 8px;
-            animation: slideIn 0.3s ease;
+            color: #e2e8f0;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
         
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(148, 163, 184, 0.08);
+            padding: 14px 16px;
+            border-radius: 14px;
+            color: #e2e8f0;
+        }
+        
+        .result-item span:first-child {
+            color: #94a3b8;
+        }
+        
+        .result-item span:last-child {
+            font-weight: 700;
+            color: #f8fafc;
+        }
+        
+        .empty-state {
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 840px) {
+            .calculator {
+                grid-template-columns: 1fr;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .left-panel {
+                border-right: none;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.12);
             }
         }
         
-        input::placeholder {
-            color: #999;
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 32px;
-                margin-bottom: 20px;
+        @media (max-width: 560px) {
+            .header {
+                padding: 24px 20px 16px;
             }
-            
-            .calc-box {
-                padding: 25px;
+            .page {
+                border-radius: 20px;
+            }
+            .panel {
+                padding: 24px 18px;
+            }
+            button {
+                padding: 14px 16px;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Калькулятор онлайн</h1>
-    <div class="calc-box">
-        <input type="number" id="num1" placeholder="Первое число">
-        <input type="number" id="num2" placeholder="Второе число">
-        <button onclick="calculate()">Вычислить</button>
-        <div id="results"></div>
+    <div class="page">
+        <div class="header">
+            <h1>Калькулятор</h1>
+            <p>Введите два числа слева, нажмите «Вычислить» и посмотрите результаты справа. Страница готова для GitHub Pages как статичная веб-страница.</p>
+        </div>
+
+        <div class="calculator">
+            <div class="panel left-panel">
+                <label for="num1">Первое число</label>
+                <input type="number" id="num1" placeholder="Введите первое число">
+
+                <label for="num2">Второе число</label>
+                <input type="number" id="num2" placeholder="Введите второе число">
+
+                <button onclick="calculate()">Вычислить</button>
+            </div>
+
+            <div class="panel right-panel">
+                <div class="results-card">
+                    <div class="result-title">Результаты</div>
+                    <div id="results">
+                        <div class="empty-state">Результаты появятся здесь после нажатия кнопки.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -151,15 +220,12 @@
             const summa = num1 + num2;
             const sub = num1 - num2;
             const mult = num1 * num2;
-            const div = num2 !== 0 ? num1 / num2 : 'Ошибка: деление на 0';
+            const div = num2 !== 0 ? (num1 / num2).toFixed(2) : 'Ошибка: деление на 0';
             
             document.getElementById('results').innerHTML = `
-                <div class="result">Сумма: ${summa}</div>
-                <div class="result">Разность: ${sub}</div>
-                <div class="result">Умножение: ${mult}</div>
-                <div class="result">Деление: ${div}</div>
+                <div class="result-item"><span>Сумма</span><span>${summa}</span></div>
+                <div class="result-item"><span>Разность</span><span>${sub}</span></div>
+                <div class="result-item"><span>Умножение</span><span>${mult}</span></div>
+                <div class="result-item"><span>Деление</span><span>${div}</span></div>
             `;
         }
-    </script>
-</body>
-</html>
