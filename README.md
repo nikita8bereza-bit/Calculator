@@ -119,6 +119,15 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            min-height: 280px;
+        }
+        
+        #results {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
         }
         
         .result-title {
@@ -228,3 +237,6 @@
                 <div class="result-item"><span>Деление</span><span>${div}</span></div>
             `;
         }
+    </script>
+</body>
+</html>
