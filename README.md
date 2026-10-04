@@ -1,5 +1,4 @@
 
-<html>
 <head>
     <title>Калькулятор</title>
     <style>
